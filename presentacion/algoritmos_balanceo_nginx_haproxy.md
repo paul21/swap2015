@@ -27,11 +27,11 @@ Antes de ejecutar las pruebas preparamos un esquema de máquinas virtuales con d
 	Servidor 4: 256MB RAM
 	Servidor Apache 2.2.22
 
-![imagen] (https://github.com/paul21/swap2015/tree/master/presentacion/imagenes/esquema_mixto.png)
+![imagen] (https://github.com/paul21/swap2015/blob/master/presentacion/imagenes/esquema_mixto.png)
 
 Para simular las diferencias de capacidades de procesamiento de los distintos servidores, limitamos el porcentaje de CPU en la configuración de VirtualBox:
 
-![imagen] (https://github.com/paul21/swap2015/tree/master/presentacion/imagenes/vb_conf.png)
+![imagen] (https://github.com/paul21/swap2015/blob/master/presentacion/imagenes/vb_conf.png)
 
 
 **3 - Algoritmos de balanceo de carga**
@@ -95,7 +95,7 @@ Es un algoritmo basado en la ponderación previa de los servidores de acuerdo a 
 
 Para nuestras pruebas utilizaremos los siguientes pesos, siguiendo la lógica que los servidores 3 y 4 parecen poseer el 75% y el 50% respectivamente la capacidad de los dos primeros:
 
-![imagen] (https://github.com/paul21/swap2015/tree/master/presentacion/imagenes/esquema_mixto_w.png)
+![imagen] (https://github.com/paul21/swap2015/blob/master/presentacion/imagenes/esquema_mixto_w.png)
 
 En Nginx:
 
@@ -147,39 +147,39 @@ En HAProxy:
 
 Apache Benchmark
 
-![imagen] (https://github.com/paul21/swap2015/tree/master/presentacion/imagenes/ab.png)
+![imagen] (https://github.com/paul21/swap2015/blob/master/presentacion/imagenes/ab.png)
 
 Siege
 
-![imagen] (https://github.com/paul21/swap2015/tree/master/presentacion/imagenes/siege.png)
+![imagen] (https://github.com/paul21/swap2015/blob/master/presentacion/imagenes/siege.png)
 
 
 **5 – Resultados**
 
 ##Nginx
 
-![imagen] (https://github.com/paul21/swap2015/tree/master/presentacion/imagenes/nginx_time.png)
+![imagen] (https://github.com/paul21/swap2015/blob/master/presentacion/imagenes/nginx_time.png)
 
-![imagen] (https://github.com/paul21/swap2015/tree/master/presentacion/imagenes/nginx_fail.png)
+![imagen] (https://github.com/paul21/swap2015/blob/master/presentacion/imagenes/nginx_fail.png)
 
-![imagen] (https://github.com/paul21/swap2015/tree/master/presentacion/imagenes/nginx_rps.png)
+![imagen] (https://github.com/paul21/swap2015/blob/master/presentacion/imagenes/nginx_rps.png)
 
 ##HAProxy
 
-![imagen] (https://github.com/paul21/swap2015/tree/master/presentacion/imagenes/haproxy_time.png)
+![imagen] (https://github.com/paul21/swap2015/blob/master/presentacion/imagenes/haproxy_time.png)
 
-![imagen] (https://github.com/paul21/swap2015/tree/master/presentacion/imagenes/haproxy_fail.png)
+![imagen] (https://github.com/paul21/swap2015/blob/master/presentacion/imagenes/haproxy_fail.png)
 
-![imagen] (https://github.com/paul21/swap2015/tree/master/presentacion/imagenes/haproxy_rps.png)
+![imagen] (https://github.com/paul21/swap2015/blob/master/presentacion/imagenes/haproxy_rps.png)
 
 
 ##Comparativa
 
-![imagen] (https://github.com/paul21/swap2015/tree/master/presentacion/imagenes/com_time.png)
+![imagen] (https://github.com/paul21/swap2015/blob/master/presentacion/imagenes/com_time.png)
 
-![imagen] (https://github.com/paul21/swap2015/tree/master/presentacion/imagenes/com_fail.png)
+![imagen] (https://github.com/paul21/swap2015/blob/master/presentacion/imagenes/com_fail.png)
 
-![imagen] (https://github.com/paul21/swap2015/tree/master/presentacion/imagenes/com_rps.png)
+![imagen] (https://github.com/paul21/swap2015/blob/master/presentacion/imagenes/com_rps.png)
 
 
 **6 - Conclusiones**
