@@ -1,12 +1,12 @@
 ﻿Análisis y comparación de algoritmos de balanceo con Nginx y HAProxy
 --------------------------------------------------------------------
 
-**1 - Introducción**
+##1 - Introducción
 
 El objetivo de este trabajo es configurar y analizar las diferencias en rendimiento de distintos tipos de algoritmos de balanceo tanto en Nginx y HAProxy para compararlos entre sí y respecto a un entorno sin balanceo de carga. El primero es un servidor web, reverse-proxy y balanceador y el segundo es un balanceador de diversos tipos de tráfico TCP que reparte peticiones entre diferentes servidores web.
 
 
-**2 - Entorno de pruebas**
+##2 - Entorno de pruebas
 
 Antes de ejecutar las pruebas preparamos un esquema de máquinas virtuales con diferentes características de hardware.
 
@@ -34,13 +34,13 @@ Para simular las diferencias de capacidades de procesamiento de los distintos se
 ![imagen] (https://github.com/paul21/swap2015/blob/master/presentacion/imagenes/vb_conf.png)
 
 
-**3 - Algoritmos de balanceo de carga**
+##3 - Algoritmos de balanceo de carga
 
-##No-LB (sin balanceo)
+###No-LB (sin balanceo)
 
 Es el caso más simple, un sólo servidor web recibe todas las peticiones directamente sin intermediarios. La configuración de Apache es conocida y excede el alcance de este trabajo.
 
-##Round-Robin
+###Round-Robin
 
 En esta configuración el balanceador mantiene una cola cíclica de servidores. Cuando entra una nueva conexión se le asigna al siguiente servidor en la lista, independientemente de cualquier otro factor, como cantidad de conexiones existentes o capacidad de procesamiento.
 
@@ -57,7 +57,7 @@ En Nginx:
 En HAProxy:
 
 	backend servers {
-	    balance round-robin
+	    balance roundrobin
 	    server s1 192.168.1.101 maxconn 32
 	    server s2 192.168.1.102 maxconn 32
 	    server s3 192.168.1.103 maxconn 32
@@ -65,7 +65,7 @@ En HAProxy:
 	}
 
 
-##Least Connections
+###Least Connections
 
 Este algoritmo asigna la siguiente petición entrante al servidor con menor cantidad de conexiones en curso.
 
@@ -89,7 +89,7 @@ En HAProxy:
 	    server s4 192.168.1.104 maxconn 32
 	}
 
-##Weight
+###Weight
 
 Es un algoritmo basado en la ponderación previa de los servidores de acuerdo a su capacidad de recibir peticiones. Así, el balanceador asignará las peticiones en la proporción indicada.
 
@@ -116,7 +116,7 @@ En HAProxy:
 	}
 
 
-##Mixto (LC+W)
+###Mixto (LC+W)
 
 Por último es posible combinar los algoritmos mencionados anteriormente. En este estudio utilizaremos los algoritmos de ponderación y menor cantidad de conexiones simultáneamente.
 
@@ -141,22 +141,26 @@ En HAProxy:
 	}
 
 
-**4 - Proceso de medición**
+##4 - Proceso de medición
 
-##4.1 Herramientas
+###4.1 Herramientas
 
 Apache Benchmark
+
+Es una herramienta de línea de comandos que viene integrada con la instalación estándar de Apache. En este ejemplo ejecutamos 1000 peticiones GET hasta 10 de ellas en forma concurrente:
 
 ![imagen] (https://github.com/paul21/swap2015/blob/master/presentacion/imagenes/ab.png)
 
 Siege
 
+Es una herramienta de prueba de carga y benchmarking con soporte de autenticación, cookies y configuración de un número simulado de clientes:
+
 ![imagen] (https://github.com/paul21/swap2015/blob/master/presentacion/imagenes/siege.png)
 
 
-**5 – Resultados**
+##5 – Resultados
 
-##Nginx
+###Nginx
 
 ![imagen] (https://github.com/paul21/swap2015/blob/master/presentacion/imagenes/nginx_time.png)
 
@@ -164,7 +168,7 @@ Siege
 
 ![imagen] (https://github.com/paul21/swap2015/blob/master/presentacion/imagenes/nginx_rps.png)
 
-##HAProxy
+###HAProxy
 
 ![imagen] (https://github.com/paul21/swap2015/blob/master/presentacion/imagenes/haproxy_time.png)
 
@@ -173,7 +177,7 @@ Siege
 ![imagen] (https://github.com/paul21/swap2015/blob/master/presentacion/imagenes/haproxy_rps.png)
 
 
-##Comparativa
+###Comparativa
 
 ![imagen] (https://github.com/paul21/swap2015/blob/master/presentacion/imagenes/com_time.png)
 
@@ -182,7 +186,7 @@ Siege
 ![imagen] (https://github.com/paul21/swap2015/blob/master/presentacion/imagenes/com_rps.png)
 
 
-**6 - Conclusiones**
+##6 - Conclusiones
 
 Antes de adentrarnos en la interpretación de los resultados es preciso aclarar que este estudio posee varias limitaciones y por lo tanto las conclusiones aquí expuestas sólo pueden entenderse como una serie de observaciones válidas para entornos de prueba similares y no deben ser tomadas como definitivas.
 
@@ -201,5 +205,3 @@ Realizadas estas aclaraciones podemos concluir que ambos balanceadores rindieron
 También se puede observar que al contrario de lo que podría indicar la intuición, el rendimiento del algoritmo por ponderación estuvo por debajo que aquellos más simples. Esto puede deberse a que un porcenaje 
 
 Por último, se puede observar que la utilización de un balanceador significó una diferencia de rendimiento considerable independientemente del algoritmo utilizado.
-
-**7- Bibliografía**
