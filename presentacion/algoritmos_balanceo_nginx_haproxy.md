@@ -202,6 +202,24 @@ A diferencia de un entorno con servidores físicamente independiente, las máqui
 
 Realizadas estas aclaraciones podemos concluir que ambos balanceadores rindieron de forma similar. Ambos son balanceadores comerciales fuertemente optimizados, desarrollados en lenguajes de bajo nivel y utilizados por grandes empresas con enormes cantidad de usuarios, por lo que es esperable que esto sea así. El algoritmo que mejor distribuyó la carga de acuerdo a las métricas fue el mixto, dejandolo como claro ganador.
 
-También se puede observar que al contrario de lo que podría indicar la intuición, el rendimiento del algoritmo por ponderación estuvo por debajo que aquellos más simples. Esto puede deberse a que un porcenaje 
+También se puede observar que al contrario de lo que podría indicar la intuición, el rendimiento del algoritmo por ponderación estuvo por debajo que aquellos más simples.
 
 Por último, se puede observar que la utilización de un balanceador significó una diferencia de rendimiento considerable independientemente del algoritmo utilizado.
+
+###7 - Bibliografía
+
+http://nginx.org/en/docs/
+
+https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-load-balancing
+
+Nginx HTTP server - Nedelcu, Clément.
+
+Mastering Nginx - Sarkar, Dipankar
+
+https://cbonte.github.io/haproxy-dconv/configuration-1.4.html
+
+https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts
+
+http://docs.basho.com/riak/latest/ops/advanced/configs/load-balancing-proxy/
+
+Practical Linux Infrastructure - Ali, Syed
